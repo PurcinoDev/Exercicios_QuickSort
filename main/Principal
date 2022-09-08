@@ -1,0 +1,23 @@
+package main;
+
+import br.edu.fateczl.QuickSort;
+
+public class Principal {
+
+	public static void main(String[] args) {
+		
+		QuickSort qckSort = new QuickSort();
+	
+		long[] vetor = {0, 3, 5, 7, 8, 2, 4, 6, 9};
+		
+		long primeiraPosicao = 1;
+		long ultimaPosicao = vetor.length - 1;
+		
+		qckSort.quickSort(vetor, primeiraPosicao, ultimaPosicao);
+		
+		for (long num : vetor) {
+			System.out.println(num + " ");
+		}
+	}
+
+}
