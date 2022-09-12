@@ -7,42 +7,43 @@ public class QuickSort {
 	}
 	
 	public long[] quickSort(long[] vetor, long primeiraPosicao, long ultimaPosicao) {
-		if (vetor.length > 1) {
-			long pivo = primeiraPosicao;
-			long ponteiroEsquerda = primeiraPosicao + 1;
-			long ponteiroDireita = ultimaPosicao;
-			do {
-				do {
-					ponteiroEsquerda++;
-				} while (vetor[(int) ponteiroEsquerda] <= pivo && ponteiroEsquerda < ponteiroDireita);
-				do {
-					ponteiroDireita--;
-				} while (vetor[(int) ponteiroDireita] > pivo && ponteiroEsquerda <= ponteiroDireita);
-				if (ponteiroEsquerda < ponteiroDireita) {
-					troca(vetor, ponteiroEsquerda, ponteiroDireita);
-					ponteiroEsquerda++;
-					ponteiroDireita--;
-				}
-			} while (ponteiroEsquerda < ponteiroDireita);
-			troca(vetor, ponteiroDireita, pivo);
-			long[] a = divide(vetor, pivo + 1);
-			long[] b = divide(vetor, pivo - 1);
-			
-			quickSort(a, 0, a.length - 1);
-			quickSort(b, 0, b.length - 1);
+		if (ultimaPosicao > primeiraPosicao) {
+			long pivo = recursivaQuickSort(vetor, primeiraPosicao, ultimaPosicao);
+			quickSort(vetor, primeiraPosicao, pivo - 1);
+			quickSort(vetor, pivo + 1, ultimaPosicao);
 		}
+		
 		return vetor;
 	}
 	
-	private long[] troca(long[] vetor, long ponteiroEsquerda, long ponteiroDireita) {
-		long aux = vetor[(int) ponteiroEsquerda];
-		vetor[(int) ponteiroEsquerda] = vetor[(int) ponteiroDireita];
-		vetor[(int) ponteiroDireita] = aux;
-		return vetor;
+	private long recursivaQuickSort(long[] vetor, long primeiraPosicao, long ultimaPosicao) {
+		long pivo = vetor[(int) primeiraPosicao];
+		long ponteiroEsquerda = primeiraPosicao + 1;
+		long ponteiroDireita = ultimaPosicao;
+			
+		while (ponteiroEsquerda <= ponteiroDireita) {
+			while (vetor[(int) ponteiroEsquerda] <= pivo && ponteiroEsquerda <= ponteiroDireita) {
+				ponteiroEsquerda++;
+			}
+			while (vetor[(int) ponteiroDireita] > pivo && ponteiroEsquerda <= ponteiroDireita) {
+				ponteiroDireita--;
+			}
+			if (ponteiroEsquerda < ponteiroDireita) {
+				troca(vetor, ponteiroEsquerda, ponteiroDireita);
+				ponteiroEsquerda++;
+				ponteiroDireita--;
+			}
+		}
+		
+		troca(vetor, primeiraPosicao, ponteiroDireita);
+
+		quickSort(vetor, 0, ponteiroDireita - 1);
+		quickSort(vetor, ponteiroDireita + 1, ultimaPosicao);
 	}
 	
-	private long[] divide(long[] vetor, long pivo) {
-		long[] subVetor = new long[(int) pivo];
-		return subVetor;
+	private void troca(long[] vetor, long i, long j) {
+		long aux = vetor[(int) i];
+		vetor[(int) i] = vetor[(int) j];
+		vetor[(int) j] = aux;
 	}
 }
