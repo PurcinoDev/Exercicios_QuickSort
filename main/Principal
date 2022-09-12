@@ -8,7 +8,7 @@ public class Principal {
 		
 		QuickSort qckSort = new QuickSort();
 	
-		long[] vetor = {0, 3, 5, 7, 8, 2, 4, 6, 9};
+		long[] vetor = {0, 3, 5, 7, 8, 1, 2, 4, 6, 9};
 		
 		long primeiraPosicao = 0;
 		long ultimaPosicao = vetor.length - 1;
