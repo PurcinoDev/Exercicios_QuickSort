@@ -10,7 +10,7 @@ public class Principal {
 	
 		long[] vetor = {0, 3, 5, 7, 8, 2, 4, 6, 9};
 		
-		long primeiraPosicao = 1;
+		long primeiraPosicao = 0;
 		long ultimaPosicao = vetor.length - 1;
 		
 		qckSort.quickSort(vetor, primeiraPosicao, ultimaPosicao);
