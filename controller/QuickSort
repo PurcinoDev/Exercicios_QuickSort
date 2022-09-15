@@ -21,7 +21,7 @@ public class QuickSort {
 		long ponteiroEsquerda = primeiraPosicao + 1;
 		long ponteiroDireita = ultimaPosicao;
 			
-		while (ponteiroEsquerda <= ponteiroDireita) {
+		while (ponteiroEsquerda < ponteiroDireita) {
 			while (vetor[(int) ponteiroEsquerda] <= pivo && ponteiroEsquerda <= ponteiroDireita) {
 				ponteiroEsquerda++;
 			}
