@@ -36,9 +36,8 @@ public class QuickSort {
 		}
 		
 		troca(vetor, primeiraPosicao, ponteiroDireita);
-
-		quickSort(vetor, 0, ponteiroDireita - 1);
-		quickSort(vetor, ponteiroDireita + 1, ultimaPosicao);
+		
+		return ponteiroDireita;
 	}
 	
 	private void troca(long[] vetor, long i, long j) {
